@@ -1,0 +1,193 @@
+ĐỀ XUẤT BÀI TẬP NHÓM
+XÂY DỰNG ỨNG DỤNG QUẢN LÝ CHI TIÊU
+VÀ THU NHẬP CÁ NHÂN BẰNG PYTHON
+1. Tên đề tài
+XÂY DỰNG ỨNG DỤNG QUẢN LÝ CHI TIÊU VÀ THU NHẬP CÁ NHÂN BẰNG PYTHON.
+2. Lý do chọn đề tài
+Trong cuộc sống hằng ngày, mỗi cá nhân thường có nhiều khoản thu nhập và chi tiêu như tiền lương, tiền thưởng, tiền ăn uống, mua sắm, đi lại, học tập và giải trí. Nếu không theo dõi thường xuyên, người dùng khó biết được mình đã sử dụng tiền vào những khoản nào và tình hình tài chính cá nhân đang ở mức nào.
+Vì vậy, nhóm đề xuất xây dựng một ứng dụng Python nhằm quản lý các khoản thu nhập, chi tiêu, phân loại giao dịch, theo dõi số dư và thống kê tình hình tài chính. Đề tài đồng thời giúp nhóm vận dụng các kiến thức Python như biến, kiểu dữ liệu, hàm, điều kiện, vòng lặp, danh sách, xử lý file, lập trình hướng đối tượng và cơ sở dữ liệu.
+3. Mục tiêu của đề tài
+3.1. Mục tiêu chính
+Xây dựng một chương trình bằng Python cho phép người dùng quản lý, theo dõi và thống kê thu nhập – chi tiêu cá nhân một cách đơn giản, chính xác và trực quan.
+3.2. Mục tiêu cụ thể
+Thêm khoản thu nhập.
+Thêm khoản chi tiêu.
+Chỉnh sửa hoặc xóa giao dịch.
+Phân loại các giao dịch theo danh mục.
+Tìm kiếm và xem lịch sử giao dịch.
+Tính tổng thu nhập, tổng chi tiêu và số dư.
+Thống kê chi tiêu theo từng danh mục.
+Lọc dữ liệu theo ngày hoặc tháng.
+Lưu dữ liệu để sử dụng lại trong những lần sau.
+Đưa ra cảnh báo hoặc gợi ý quản lý chi tiêu khi cần thiết.
+4. Đối tượng sử dụng
+Sinh viên.
+Người đi làm.
+Người muốn theo dõi tài chính cá nhân.
+Người mới bắt đầu lập kế hoạch chi tiêu.
+Đối tượng trọng tâm là sinh viên, vì đây là nhóm thường có nguồn thu nhập hạn chế nhưng có nhiều khoản chi tiêu nhỏ hằng ngày.
+5. Các chức năng chính của chương trình
+5.1. Quản lý thu nhập
+Người dùng có thể nhập ngày nhận tiền, số tiền, nguồn thu nhập và ghi chú.
+Ngày
+Số tiền
+Nguồn
+01/09/2026
+5.000.000 VNĐ
+Lương
+05/09/2026
+1.000.000 VNĐ
+Gia đình
+15/09/2026
+500.000 VNĐ
+Làm thêm
+5.2. Quản lý chi tiêu
+Người dùng nhập ngày chi, số tiền, danh mục, nội dung và ghi chú.
+Một số danh mục dự kiến:
+Ăn uống
+Đi lại
+Học tập
+Mua sắm
+Giải trí
+Nhà ở
+Sức khỏe
+Khác
+5.3. Quản lý giao dịch
+Xem danh sách giao dịch.
+Thêm giao dịch.
+Sửa giao dịch.
+Xóa giao dịch.
+Tìm kiếm giao dịch.
+6. Thống kê tài chính
+Chương trình tính toán các chỉ số cơ bản:
+Chỉ số
+Công thức
+Tổng thu nhập
+Tổng các khoản thu
+Tổng chi tiêu
+Tổng các khoản chi
+Số dư
+Tổng thu nhập - Tổng chi tiêu
+Ví dụ tổng quan tài chính:
+Nội dung
+Giá trị
+Tổng thu nhập
+8.000.000 VNĐ
+Tổng chi tiêu
+5.250.000 VNĐ
+Số dư hiện tại
+2.750.000 VNĐ
+7. Thống kê theo danh mục
+Chương trình có thể thống kê chi tiêu theo từng danh mục trong tháng.
+Danh mục
+Số tiền
+Ăn uống
+1.500.000 VNĐ
+Đi lại
+500.000 VNĐ
+Mua sắm
+800.000 VNĐ
+Giải trí
+450.000 VNĐ
+Học tập
+300.000 VNĐ
+Tổng
+3.550.000 VNĐ
+Nếu có thời gian, nhóm có thể sử dụng thư viện Matplotlib để tạo biểu đồ tròn thể hiện tỷ lệ chi tiêu theo danh mục, biểu đồ cột theo tháng và biểu đồ đường thể hiện biến động số dư.
+8. Công nghệ sử dụng
+Công nghệ
+Mục đích
+Python
+Ngôn ngữ lập trình chính
+Tkinter
+Xây dựng giao diện người dùng
+SQLite
+Lưu trữ dữ liệu
+Matplotlib
+Vẽ biểu đồ thống kê
+Datetime
+Xử lý ngày tháng
+Đề xuất công nghệ: Python + Tkinter + SQLite + Matplotlib. Nếu môn học chưa yêu cầu giao diện, nhóm có thể triển khai phiên bản console trước.
+9. Kiến trúc chương trình
+Cấu trúc thư mục dự kiến:
+PersonalFinance/
+├── main.py
+├── database.py
+├── models.py
+├── income.py
+├── expense.py
+├── statistics.py
+├── gui.py
+├── data/
+│   └── finance.db
+└── README.md
+10. Thiết kế dữ liệu
+Trường
+Kiểu dữ liệu
+Ý nghĩa
+id
+INTEGER
+Mã giao dịch
+date
+DATE
+Ngày giao dịch
+type
+TEXT
+Thu/Chi
+category
+TEXT
+Danh mục
+amount
+REAL
+Số tiền
+description
+TEXT
+Nội dung
+note
+TEXT
+Ghi chú
+11. Giao diện dự kiến
+Giao diện chính có thể gồm:
+Hiển thị số dư hiện tại.
+Nút thêm khoản thu.
+Nút thêm khoản chi.
+Màn hình lịch sử giao dịch.
+Màn hình thống kê.
+Màn hình quản lý danh mục.
+12. Chức năng nâng cao
+12.1. Mức khá
+Sử dụng SQLite.
+Tìm kiếm và lọc giao dịch.
+Thống kê theo ngày/tháng.
+Phân loại chi tiêu.
+Giao diện Tkinter.
+12.2. Mức nâng cao
+Biểu đồ thống kê.
+Đặt ngân sách hàng tháng.
+Cảnh báo khi chi tiêu vượt ngân sách.
+Xuất dữ liệu ra Excel/CSV.
+Đăng nhập người dùng.
+Báo cáo tài chính theo tháng.
+13
+. Kế hoạch thực hiện
+Giai đoạn
+Nội dung
+1. Phân tích
+Xác định yêu cầu, chức năng và thiết kế cơ sở dữ liệu
+2. Lập trình
+Xây dựng database, chức năng thu/chi và giao diện
+3. Thống kê
+Tính toán tổng thu/chi, thống kê danh mục và biểu đồ
+4. Kiểm thử
+Kiểm tra thêm, sửa, xóa, dữ liệu sai và tính toán
+5. Hoàn thiện
+Tích hợp, hoàn thiện giao diện, báo cáo và thuyết trình
+14
+. Kết quả dự kiến
+Sau khi hoàn thành, nhóm dự kiến xây dựng được một ứng dụng có khả năng quản lý, lưu trữ, tra cứu và phân tích các khoản thu nhập – chi tiêu cá nhân. Ứng dụng giúp người dùng dễ dàng nắm bắt tình hình tài chính và có kế hoạch sử dụng tiền hợp lý hơn.
+15
+. Điểm nổi bật của đề tài
+Đề tài không chỉ dừng ở việc nhập và xuất dữ liệu mà còn hướng đến việc phân tích thói quen tài chính cá nhân. Người dùng có thể theo dõi số dư, biết nhóm chi tiêu nào chiếm tỷ trọng lớn và nhận cảnh báo khi vượt ngân sách.
+16
+. Kết luận
+Đề tài xây dựng ứng dụng quản lý chi tiêu và thu nhập cá nhân bằng Python có tính thực tế, phù hợp với kiến thức môn học và có khả năng mở rộng. Thông qua đề tài, nhóm có thể rèn luyện kỹ năng lập trình, xử lý dữ liệu, thiết kế giao diện, làm việc nhóm và phát triển một sản phẩm phần mềm hoàn chỉnh.

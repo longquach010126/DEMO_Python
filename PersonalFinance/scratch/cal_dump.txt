@@ -1,0 +1,75 @@
+def create_calendar(self):
+        frame = tk.Frame(self.main_content, bg=theme.BG)
+        self.frames["Calendar"] = frame
+        
+        now = datetime.now()
+        self.cal_month, self.cal_year = now.month, now.year
+        
+        def right_action(p):
+            nav = tk.Frame(p, bg=theme.BG)
+            tk.Button(nav, text="< Trước", bg=theme.CARD, fg=theme.TEXT, relief="flat", font=theme.F(11), padx=15, pady=8, cursor="hand2", command=self.cal_prev).pack(side="left", padx=5)
+            tk.Button(nav, text="Sau >", bg=theme.CARD, fg=theme.TEXT, relief="flat", font=theme.F(11), padx=15, pady=8, cursor="hand2", command=self.cal_next).pack(side="left", padx=5)
+            return nav
+            
+        self.header_frame = tk.Frame(frame, bg=theme.BG)
+        self.header_frame.pack(fill="x")
+        self._create_header(self.header_frame, f"Tháng {self.cal_month}/{self.cal_year}", "Theo dõi chi tiêu từng ngày", right_action)
+
+        b, self.cal_container = self._create_card(frame, padding=20, accent_color=theme.PRIMARY)
+        b.pack(fill="both", expand=True, padx=40, pady=(0, 40))
+
+    def cal_prev(self):
+        self.cal_month -= 1
+        if self.cal_month == 0: self.cal_month, self.cal_year = 12, self.cal_year - 1
+        self.update_calendar()
+        
+    def cal_next(self):
+        self.cal_month += 1
+        if self.cal_month == 13: self.cal_month, self.cal_year = 1, self.cal_year + 1
+        self.update_calendar()
+
+    def update_calendar(self):
+        for w in self.header_frame.winfo_children(): w.destroy()
+        
+        def right_action(p):
+            nav = tk.Frame(p, bg=theme.BG)
+            tk.Button(nav, text="< Trước", bg=theme.CARD, fg=theme.TEXT, relief="flat", font=theme.F(11), padx=15, pady=8, cursor="hand2", command=self.cal_prev).pack(side="left", padx=5)
+            tk.Button(nav, text="Sau >", bg=theme.CARD, fg=theme.TEXT, relief="flat", font=theme.F(11), padx=15, pady=8, cursor="hand2", command=self.cal_next).pack(side="left", padx=5)
+            return nav
+            
+        self._create_header(self.header_frame, f"Tháng {self.cal_month}/{self.cal_year}", "Theo dõi chi tiêu từng ngày", right_action)
+
+        for w in self.cal_container.winfo_children(): w.destroy()
+        
+        for i, d in enumerate(["T2", "T3", "T4", "T5", "T6", "T7", "CN"]):
+            tk.Label(self.cal_container, text=d, font=theme.F(11, "bold"), fg=theme.TEXT_2, bg=theme.CARD).grid(row=0, column=i, pady=(0, 10))
+            
+        cal_days = calendar.monthcalendar(self.cal_year, self.cal_month)
+        expenses = Transaction.get_daily_expenses(f"{self.cal_year:04d}-{self.cal_month:02d}")
+        today = date.today()
+        
+        for r, week in enumerate(cal_days):
+            self.cal_container.rowconfigure(r+1, weight=1, uniform="row")
+            for c, day in enumerate(week):
+                cell_bg = theme.CARD
+                if day == today.day and self.cal_month == today.month and self.cal_year == today.year:
+                    cell_bg = theme.BALANCE_SOFT
+                    
+                cell = tk.Frame(self.cal_container, bg=cell_bg, width=120, height=100)
+                cell.grid(row=r+1, column=c, padx=5, pady=5, sticky="nsew")
+                cell.grid_propagate(False)
+                
+                cell.config(highlightbackground=theme.BORDER, highlightthickness=1)
+                
+                if day != 0:
+                    lbl_day = tk.Label(cell, text=str(day), font=theme.F(12, "bold"), fg=theme.TEXT, bg=cell_bg)
+                    lbl_day.pack(anchor="ne", padx=10, pady=5)
+                    
+                    if day in expenses:
+                        lbl_amt = tk.Label(cell, text=f"-{theme.money_short(expenses[day])}", font=theme.F(11, "bold"), fg=theme.EXPENSE, bg=cell_bg)
+                        lbl_amt.pack(anchor="center", pady=15)
+        
+        for i in range(7):
+            self.cal_container.columnconfigure(i, weight=1, uniform="col")
+
+    # ============================== BUDGETS ==============================
